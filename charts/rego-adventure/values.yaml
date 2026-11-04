@@ -1,0 +1,62 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/ghmer/rego-adventure
+  # Defaults to the chart appVersion when empty.
+  tag: ""
+  pullPolicy: IfNotPresent
+imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+# Application settings, rendered into the ConfigMap as environment variables.
+config:
+  # Public origin of the deployment (scheme + host). The application accepts this
+  # as the only CORS origin, so it must match the address users visit.
+  domain: http://localhost:8080
+  port: 8080
+  # debug | info | warn | error
+  logLevel: info
+  # release | debug
+  ginMode: release
+  # CIDRs of the proxies in front of the app, for correct client IP detection.
+  trustedProxies:
+    - 10.0.0.0/8
+  # Adds the legal-notice link in the footer.
+  showImpressum: false
+
+# OIDC authentication. The application validates externally issued ID tokens, so
+# no client secret is needed here.
+auth:
+  enabled: false
+  issuer: ""
+  discoveryUrl: ""
+  clientId: ""
+  audience: ""
+  allowedAlgorithms:
+    - RS256
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+service:
+  type: ClusterIP
+  port: 80
+  annotations: {}
+
+ingress:
+  enabled: false
+  className: nginx
+  host: rego.mydomain.local
+  path: /
+  pathType: Prefix
+  annotations: {}
+  tls:
+    enabled: false
+    secretName: rego-tls

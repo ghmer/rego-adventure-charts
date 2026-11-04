@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "rego-adventure.fullname" . }}
+  labels:
+    {{- include "rego-adventure.labels" . | nindent 4 }}
+data:
+  DOMAIN: {{ .Values.config.domain | quote }}
+  PORT: {{ int .Values.config.port | quote }}
+  GIN_MODE: {{ .Values.config.ginMode | quote }}
+  LOG_LEVEL: {{ .Values.config.logLevel | quote }}
+  SHOW_IMPRESSUM: {{ .Values.config.showImpressum | quote }}
+  {{- with .Values.config.trustedProxies }}
+  TRUSTED_PROXIES: {{ join "," . | quote }}
+  {{- end }}
+  AUTH_ENABLED: {{ .Values.auth.enabled | quote }}
+  {{- if .Values.auth.enabled }}
+  AUTH_ISSUER: {{ .Values.auth.issuer | quote }}
+  AUTH_DISCOVERY_URL: {{ .Values.auth.discoveryUrl | quote }}
+  AUTH_CLIENT_ID: {{ .Values.auth.clientId | quote }}
+  AUTH_AUDIENCE: {{ .Values.auth.audience | quote }}
+  AUTH_ALLOWED_ALGORITHMS: {{ join "," .Values.auth.allowedAlgorithms | quote }}
+  {{- end }}

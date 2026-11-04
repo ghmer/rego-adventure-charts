@@ -1,0 +1,18 @@
+.DS_Store
+*.sw?
+*.bak
+*.tmp
+*.orig
+.hgignore
+.hg/
+.git
+.gitattributes
+.gitignore
+.idea/
+.vscode/
+*.tmproj
+# keep packages and rendered output out of the chart archive
+*.tgz
+rendered/
+# development-only test suites stay out of the published package
+tests/

@@ -1,0 +1,31 @@
+Rego Adventure {{ .Chart.AppVersion }} deployed as "{{ .Release.Name }}" in namespace "{{ .Release.Namespace }}".
+
+{{- if .Values.ingress.enabled }}
+
+Open {{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}://{{ .Values.ingress.host }}{{ .Values.ingress.path | trimSuffix "/" }}/
+{{- else }}
+
+The Service is a {{ .Values.service.type }}. Port-forward to reach it:
+
+  kubectl -n {{ .Release.Namespace }} port-forward svc/{{ include "rego-adventure.fullname" . }} 8080:{{ int .Values.service.port }}
+
+Then open http://localhost:8080
+{{- end }}
+
+The application accepts only this origin for CORS:
+
+  config.domain = {{ .Values.config.domain }}
+{{- if .Values.ingress.enabled }}
+{{- $host := include "rego-adventure.domainHost" . }}
+{{- if ne $host .Values.ingress.host }}
+
+WARNING: config.domain ({{ $host }}) is not the Ingress host ({{ .Values.ingress.host }}).
+Browsers will be rejected by the application. Fix it with:
+
+  helm upgrade {{ .Release.Name }} ... --set config.domain={{ if .Values.ingress.tls.enabled }}https{{ else }}http{{ end }}://{{ .Values.ingress.host }}
+{{- end }}
+{{- end }}
+
+Check that the quest packs loaded:
+
+  kubectl -n {{ .Release.Namespace }} logs deploy/{{ include "rego-adventure.fullname" . }} | grep 'quest packs loaded'

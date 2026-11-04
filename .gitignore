@@ -1,0 +1,14 @@
+# packaged charts and chart-releaser scratch directories
+*.tgz
+.cr-release-packages/
+.cr-index/
+
+# rendered output from local testing
+rendered/
+index.yaml
+
+# editor and OS noise
+.DS_Store
+.idea/
+.vscode/
+*.sw?
