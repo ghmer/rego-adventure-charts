@@ -1,7 +1,7 @@
 # Rego Adventure Helm chart
 
 Helm chart for [Rego Adventure](https://github.com/ghmer/rego-adventure). Chart version equals the
-application release: chart `2.5.4` deploys image `v2.5.4`.
+application release: chart `2.6.0` deploys image `v2.6.0`.
 
 ```bash
 helm repo add rego-adventure https://ghmer.github.io/rego-adventure-charts

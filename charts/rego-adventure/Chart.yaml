@@ -3,8 +3,8 @@ name: rego-adventure
 description: Interactive quest-based learning platform for Policy-Based Access Control with Open Policy Agent and Rego
 type: application
 # version tracks the application release; appVersion is the image tag it deploys.
-version: 2.5.4
-appVersion: v2.5.4
+version: 2.6.0
+appVersion: v2.6.0
 home: https://github.com/ghmer/rego-adventure
 sources:
   - https://github.com/ghmer/rego-adventure
