@@ -2,6 +2,29 @@ apiVersion: v1
 entries:
   rego-adventure:
   - apiVersion: v2
+    appVersion: v2.6.0
+    created: "2026-11-13T17:59:39.956552652Z"
+    description: Interactive quest-based learning platform for Policy-Based Access
+      Control with Open Policy Agent and Rego
+    digest: 8615512faaae33745917f7de183d58f4cec4a1fb2c394519f642665b70ca6497
+    home: https://github.com/ghmer/rego-adventure
+    keywords:
+    - rego
+    - open-policy-agent
+    - opa
+    - pbac
+    maintainers:
+    - email: mario@parzival.link
+      name: ghmer
+    name: rego-adventure
+    sources:
+    - https://github.com/ghmer/rego-adventure
+    - https://github.com/ghmer/rego-adventure-charts
+    type: application
+    urls:
+    - https://github.com/ghmer/rego-adventure-charts/releases/download/rego-adventure-2.6.0/rego-adventure-2.6.0.tgz
+    version: 2.6.0
+  - apiVersion: v2
     appVersion: v2.5.4
     created: "2026-11-04T22:18:40.807181138Z"
     description: Interactive quest-based learning platform for Policy-Based Access
@@ -24,4 +47,4 @@ entries:
     urls:
     - https://github.com/ghmer/rego-adventure-charts/releases/download/rego-adventure-2.5.4/rego-adventure-2.5.4.tgz
     version: 2.5.4
-generated: "2026-11-04T22:18:40.807196316Z"
+generated: "2026-11-13T17:59:39.956559856Z"
